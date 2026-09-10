@@ -1,19 +1,19 @@
 import pandas as pd
 import re
 
-input_file = r"C:\Users\USER\Desktop\lead report.xlsx"
+input_file = r"C:\Users\USER\Downloads\Call Logs Report-09_09_2026 to 09_09_2026_Branch-Chennai.xls"
 
-output_file = r"C:\Users\USER\Desktop\lead report_with_remarks.xlsx"
+output_file = r"C:\Users\USER\Desktop\chennai_lead_report_with_remarks.xlsx"
 
 # ============================================================
 # 2. READ EXCEL WITHOUT ASSUMING HEADER
 # ============================================================
-
-raw = pd.read_excel(
+raw = pd.read_csv(
     input_file,
-    sheet_name="Sheet1",
+    sep="\t",
     header=None
 )
+
 
 # ============================================================
 # 3. FIND THE LOWER INBOUND / OUTBOUND HEADER
@@ -49,12 +49,11 @@ print("Lower table header found at row:", header_row)
 # 4. READ LOWER TABLE
 # ============================================================
 
-df = pd.read_excel(
+df = pd.read_csv(
     input_file,
-    sheet_name="Sheet1",
+    sep="\t",
     header=header_row
 )
-
 # Remove completely empty rows
 df = df.dropna(how="all").copy()
 

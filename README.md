@@ -1,0 +1,1 @@
+Remark generator of the customer for a lead report
